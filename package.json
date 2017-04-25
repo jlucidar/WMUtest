@@ -1,0 +1,20 @@
+{
+  "name": "WMUtest",
+  "description": "Working memory updating tasks for children aged 4 to 7",
+  "author": "Jimmy Lucidarme - Celia Benoist",
+  "repository": "https://github.com/jlucidar/WMUtest.git",
+  "license": "MIT",
+  "main":"index.html",
+  "window": {
+    "title": "WMUtest",
+    "fullscreen":true
+  },
+  "version": "0.1.0",
+  "readme": "README.md",
+  "dependencies": {
+    "nw": "0.22.x"
+  },
+  "scripts": {
+    "start": "nw"
+  }
+}

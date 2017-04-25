@@ -1,0 +1,62 @@
+/****************/
+/*    global    */
+/****************/
+h1,h2,h3 {
+  text-align: center;
+}
+
+h1{
+  margin: 0 0 10% 0;
+}
+
+h2{
+  margin: 0 0 10% 0;
+}
+/***************/
+
+
+/***************/
+/*  index.html */
+/***************/
+
+.task-link{
+  display:block;
+  text-align: center;
+}
+
+.main-home {
+position: relative;
+top: 50%;
+-webkit-transform: translateY(-50%);
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+}
+/***************/
+
+
+/***************/
+/*  task1.html */
+/***************/
+.start-task1-button{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:2em;
+  display: block;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.task1-desc p{
+  margin-left: 1.5em;
+}
+
+.table1 table{
+  width: 90%;
+  margin: 1em;
+  text-align: center;
+}
+
+.table1 th,td{
+  border: black solid 1px;
+}
+/***************/
