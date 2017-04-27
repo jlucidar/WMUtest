@@ -59,4 +59,44 @@ transform: translateY(-50%);
 .table1 th,td{
   border: black solid 1px;
 }
+
+.task1-child-instruction{
+  text-align: center;
+  margin-top: 2em;
+}
+
+.task1-img{
+  margin-left: auto;
+  margin-right: auto;
+  top: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%)translateY(-50%);
+}
+
+.lets-go-task1-button{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:2em;
+  display: block;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.task1-question-mark-container {
+    text-align: center;
+    font-size: 6em;
+    margin-top: 25%;
+}
+
+.task1-all-image-container{
+  margin-top: 2em;
+}
+
+.task1-all-image-container .pure-u-1-4 img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /***************/

@@ -7,7 +7,7 @@
   "main":"index.html",
   "window": {
     "title": "WMUtest",
-    "fullscreen":true
+    "fullscreen":false
   },
   "version": "0.1.0",
   "readme": "README.md",

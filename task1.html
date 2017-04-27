@@ -61,10 +61,9 @@
       </div>
     </div>
     <div class="task1-child-instruction hidden">
-      <p>
-        On va jouer à un jeu !<br/>
-        <br/>
-        Tu vas voir plein d’images, à la fin il faudra que tu me redises les 3 images les plus petites.<br/>
+        <h1>On va jouer à un jeu !</h1>
+        <p>
+        Tu vas voir plein d’images, à la fin il faudra que tu me redises <b><u>les 3 images les plus petites.</u></b><br/>
         <br/>
         On va faire un exemple ensemble.<br/>
         Soit bien attentif !<br/>
@@ -73,12 +72,125 @@
       </p>
       <div class="pure-g">
         <div class="pure-u-1">
-          <button class="pure-button start-task1-button">>> C’est parti ! <<</button>
+          <button class="pure-button lets-go-task1-button">>> C’est parti ! <<</button>
         </div>
       </div>
     </div>
     <div class="task1-list-container hidden">
-
+      <img class="task1-img"></img>
+    </div>
+    <div class="task1-question-mark-container hidden">
+      ?
+    </div>
+    <div class="pure-g task1-all-image-container hidden">
     </div>
   </body>
+  <script type="text/javascript" src="./libs/js/jquery.min.js"></script>
+  <script type="text/javascript" src="./libs/js/async.min.js"></script>
+  <script type="text/javascript">
+    var fs = require('fs');
+    $(document).ready(function(){
+
+      $(".start-task1-button").click(function(e){
+        $(".task1-home").addClass("hidden");
+        $(".task1-child-instruction").removeClass("hidden");
+      });
+
+      $(".lets-go-task1-button").click(function(e){
+        $(".task1-child-instruction").addClass("hidden");
+        $(".task1-list-container").removeClass("hidden");
+        startTask1();
+      });
+    });
+
+    function startTask1(){
+      doTraining('A',5,function(err,result){
+
+      });
+
+    }
+
+    function doTraining(letter,imageCount,callback){
+      fs.readdir('./images/task1/training/',function(err,imageList){
+        if(err)return console.error(err);
+
+        indexArray = getShuffledArray(imageCount);
+
+        async.eachSeries(indexArray,function(index,cb){
+          showImage(1, letter, index, imageList, true, function(){
+            cb();
+          });
+        },function(err){
+          if(err)console.error(err);
+          displayQuestionMark(function(){
+            displayAllImages(1, letter, indexArray, imageList, true, function(){
+
+            });
+          });
+        });
+
+      });
+    }
+
+    function getImagePath(taskNb, letter,imageNb,imageList,training){
+      var pathToImages = './images/task'+taskNb+'/' + (training ? 'training/' :'');
+      imageNb=("0" + imageNb).slice(-2); // format number to 2 digit format
+      var trainingImageRegExp = new RegExp("Ent_"+letter+"_"+imageNb+"_.*\.png",'g');
+      var imageFilename = imageList.find(function(filename){return filename.match(trainingImageRegExp);});
+      return pathToImages + imageFilename;
+    }
+    function showImage(taskNb, letter,imageNb,imageList,training,callback){
+      var imagePath = getImagePath(1, letter, imageNb, imageList, true);
+      $(".task1-img").removeClass("hidden");
+      $(".task1-img").attr("src",imagePath);
+      setTimeout(displayBlank.bind(this,callback),3000);
+    }
+
+    function displayBlank(callback){
+      $(".task1-img").addClass("hidden");
+      setTimeout(callback,500);
+    }
+
+    function displayQuestionMark(callback){
+      $(".task1-img").addClass("hidden");
+      $(".task1-question-mark-container").removeClass("hidden");
+      $(window).keypress(function (e) {
+        if (e.keyCode === 0 || e.keyCode === 32) {
+          e.preventDefault();
+          $(".task1-question-mark-container").addClass("hidden");
+          $(window).unbind("keypress");
+          callback();
+        }
+      });
+    }
+
+    function displayAllImages(taskNb, letter,indexArray,imageList,training,callback){
+      $(".task1-all-image-container").removeClass("hidden");
+      async.each(indexArray,function(index,cb){
+        var path = getImagePath(taskNb, letter,index,imageList,training);
+        html = "<div class='pure-u-1-4'><img src='"+path+"'></div>";
+        $(".task1-all-image-container").append(html);
+        cb();
+      },function(err){
+        if(err)console.error(err);
+        callback();
+      });
+    }
+
+
+    function getShuffledArray(nbCount) {
+      var d= new Array(nbCount);
+      for (var i=1;i<=nbCount;i++){
+        d[i-1]=i;
+      }
+      for (var c = d.length - 1; c > 0; c--) {
+        var b = Math.floor(Math.random() * (c + 1));
+        var a = d[c];
+        d[c] = d[b];
+        d[b] = a;
+      }
+      return d;
+    }
+
+  </script>
 </html>
