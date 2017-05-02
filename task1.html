@@ -11,7 +11,7 @@
       <h1>Tâche 1 :</h1>
       <h2>Tâche basée sur celle de Carriedo et al., 2016</h2>
       <div class="pure-g">
-        <div class="pure-u-2-3 task1-desc">
+        <div class="pure-u-3-5 task1-desc">
           <ul>
             <li>Lors de cette tâche, des images seront présentées et quantifiables en termes de taille.</li>
             <li>Il y a 4 fois 4 listes de 12 images correspondant (cf. tableau 1) à des différents niveaux de :
@@ -30,26 +30,26 @@
             La quantité de mots à rappeler sera indiqué à chaque fois puisqu’elle varie.
           </p>
         </div>
-        <div class="pure-u-1-3 table1">
+        <div class="pure-u-2-5 table1">
           <table>
             <tr>
               <th colspan="2" rowspan="2">Tableau 1</th>
-              <th colspan="2">Charge mémorielle</th>
+              <th colspan="2">Charge mémorielle (CM) = mots pertinents</th>
             </tr>
             <tr>
-              <td>Haute</td>
-              <td>Faible</td>
+              <td>Faible (2 mots par liste)</td>
+              <td>Haute (4 mots par liste)</td>
             </tr>
             <tr>
-              <td rowspan="2">Suppression</td>
-              <td>Haute</td>
-              <td>4 listes</td>
-              <td>4 listes</td>
+              <td rowspan="2">Suppression (SUP) = mots non pertinents</td>
+              <td>Faible (1 mot par liste)</td>
+              <td>Condition A : <br/>2 mots pertinents <br/>1 mots non pertinents <br/>6 mots de remplissage</td>
+              <td>Condition C :<br/>4 mots pertinents<br/>1 mots non pertinents<br/>4 mots de remplissage</td>
             </tr>
             <tr>
-              <td>Faible</td>
-              <td>4 listes</td>
-              <td>4 listes</td>
+              <td>Haute (4 mots par liste)</td>
+              <td>Condition B :<br/>2 mots pertinents<br/>4 mots non pertinents<br/>3 mots de remplissage</td>
+              <td>Condition D :<br/>4 mots pertinents<br/>4 mots non pertinents<br/>1 mots de remplissage</td>
             </tr>
           </table>
         </div>
@@ -60,10 +60,10 @@
         </div>
       </div>
     </div>
-    <div class="task1-child-instruction hidden">
+    <div class="task1-child-instruction task1-child-instruction-training-A hidden">
         <h1>On va jouer à un jeu !</h1>
         <p>
-        Tu vas voir plein d’images, à la fin il faudra que tu me redises <b><u>les 3 images les plus petites.</u></b><br/>
+        Tu vas voir plein d’images, à la fin il faudra que tu me redises <b><u>les 2 images les plus petites.</u></b><br/>
         <br/>
         On va faire un exemple ensemble.<br/>
         Soit bien attentif !<br/>
@@ -72,10 +72,73 @@
       </p>
       <div class="pure-g">
         <div class="pure-u-1">
-          <button class="pure-button lets-go-task1-button">>> C’est parti ! <<</button>
+          <button class="pure-button lets-go-task1-button lets-go-task1-button-training-A">>> C’est parti ! <<</button>
         </div>
       </div>
     </div>
+    <div class="task1-child-instruction task1-child-instruction-training-B hidden">
+        <h1>On Réessaye ?</h1>
+        <p>
+        Rappelle toi, Tu vas voir plein d’images, à la fin il faudra que tu me redises <b><u>les 2 images les plus petites.</u></b><br/>
+        <br/>
+        Soit bien attentif !<br/>
+        Tu es prêt ?<br/>
+        <br/>
+      </p>
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <button class="pure-button lets-go-task1-button lets-go-task1-button-training-B">>> C’est parti ! <<</button>
+        </div>
+      </div>
+    </div>
+    <div class="task1-child-instruction task1-child-instruction-training-C hidden">
+        <h1>On continue ?</h1>
+        <p>
+        Cette fois, tu vas encore voir plein d’images, mais à la fin il faudra que tu me redises <b><u>les 4 images les plus petites.</u></b><br/>
+        <br/>
+        Soit bien attentif !<br/>
+        Tu es prêt ?<br/>
+        <br/>
+      </p>
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <button class="pure-button lets-go-task1-button lets-go-task1-button-training-C">>> C’est parti ! <<</button>
+        </div>
+      </div>
+    </div>
+    <div class="task1-child-instruction task1-child-instruction-training-D hidden">
+        <h1>On Réessaye ?</h1>
+        <p>
+        Rappelle toi, Tu vas voir plein d’images, à la fin il faudra que tu me redises <b><u>les 4 images les plus petites.</u></b><br/>
+        <br/>
+        Soit bien attentif !<br/>
+        Tu es prêt ?<br/>
+        <br/>
+      </p>
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <button class="pure-button lets-go-task1-button lets-go-task1-button-training-D">>> C’est parti ! <<</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="task1-child-instruction task1-child-instruction-test hidden">
+        <h1>On Continue ?</h1>
+        <p>
+        Maintenant je te laisse faire.
+        Retiens <b><u>les <span class="task1-nb-of-images-to-remember">X</span> images les plus petites.</u></b><br/>
+        <br/>
+        Soit bien attentif !<br/>
+        Tu es prêt ?<br/>
+        <br/>
+      </p>
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <button class="pure-button lets-go-task1-button lets-go-task1-button-test">>> C’est parti ! <<</button>
+        </div>
+      </div>
+    </div>
+
     <div class="task1-list-container hidden">
       <img class="task1-img"></img>
     </div>
@@ -93,21 +156,49 @@
 
       $(".start-task1-button").click(function(e){
         $(".task1-home").addClass("hidden");
-        $(".task1-child-instruction").removeClass("hidden");
+        $(".task1-child-instruction-training-A").removeClass("hidden");
       });
 
-      $(".lets-go-task1-button").click(function(e){
-        $(".task1-child-instruction").addClass("hidden");
+      $(".lets-go-task1-button-training-A").click(function(e){
+        $(".task1-child-instruction-training-A").addClass("hidden");
         $(".task1-list-container").removeClass("hidden");
         startTask1();
       });
     });
 
     function startTask1(){
-      doTraining('A',5,function(err,result){
-
+      doTraining('A',3,function(err,result){
+        $(".task1-all-image-container").addClass("hidden");
+        $(".task1-child-instruction-training-B").removeClass("hidden");
+        $(".lets-go-task1-button-training-B").click(function(e){
+          $(".task1-child-instruction-training-B").addClass("hidden");
+          $(".task1-list-container").removeClass("hidden");
+          doTraining('B',6,function(err,result){
+            $(".task1-all-image-container").addClass("hidden");
+            $(".task1-child-instruction-training-C").removeClass("hidden");
+            $(".lets-go-task1-button-training-C").click(function(e){
+              $(".task1-child-instruction-training-C").addClass("hidden");
+              $(".task1-list-container").removeClass("hidden");
+              doTraining('C',5,function(err,result){
+                $(".task1-all-image-container").addClass("hidden");
+                $(".task1-child-instruction-training-D").removeClass("hidden");
+                $(".lets-go-task1-button-training-D").click(function(e){
+                  $(".task1-child-instruction-training-D").addClass("hidden");
+                  $(".task1-list-container").removeClass("hidden");
+                  doTraining('D',8,function(err,result){
+                    $(".task1-all-image-container").addClass("hidden");
+                    console.log("training for task 1 done !");
+                    doTest(function(err,result){
+                      console.log("Task 1 done !");
+                      document.location ="./index.html";
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
       });
-
     }
 
     function doTraining(letter,imageCount,callback){
@@ -123,24 +214,66 @@
         },function(err){
           if(err)console.error(err);
           displayQuestionMark(function(){
-            displayAllImages(1, letter, indexArray, imageList, true, function(){
-
-            });
+            displayAllImages(1, letter, indexArray, imageList, true, callback);
           });
         });
+      });
+    }
 
+    function doTest(callback){
+      var listArray = ["A_L1","A_L2","A_L3","B_L1","B_L2","B_L3","C_L1","C_L2","C_L3","D_L1","D_L2","D_L3"];
+      var image_per_list = 9;
+      fs.readdir('./images/task1/',function(err,imageList){
+        if(err)return console.error(err);
+        // shuffling the list_array
+
+        var shuffledListArray = [];
+        var indexArray = getShuffledArray(listArray.length);
+        for (i=0;i<listArray.length;i++){
+          shuffledListArray[i] = listArray[indexArray[i]-1];
+        }
+        console.log(shuffledListArray);
+
+        async.eachSeries(shuffledListArray,function(list_id,cb){
+          $(".task1-child-instruction-test").removeClass("hidden");
+          $(".task1-nb-of-images-to-remember").html((list_id[0]=="A"||list_id[0]=="B")?2:4); //check the number of image to remember, 2 for A and B criterion, 4 if anything else
+          $(".lets-go-task1-button-test").click(function(e){
+            $(".lets-go-task1-button-test").unbind("click");
+            $(".task1-child-instruction-test").addClass("hidden");
+            $(".task1-list-container").removeClass("hidden");
+            var indexArray = getShuffledArray(image_per_list);
+            async.eachSeries(indexArray,function(index,cb2){
+              showImage(1, list_id, index, imageList, false, function(){
+                cb2();
+              });
+            },function(err){
+              if(err)console.error(err);
+              displayQuestionMark(cb);
+            });
+          });
+        },function(err){
+          if(err)console.error(err);
+          callback();
+        });
       });
     }
 
     function getImagePath(taskNb, letter,imageNb,imageList,training){
       var pathToImages = './images/task'+taskNb+'/' + (training ? 'training/' :'');
       imageNb=("0" + imageNb).slice(-2); // format number to 2 digit format
-      var trainingImageRegExp = new RegExp("Ent_"+letter+"_"+imageNb+"_.*\.png",'g');
-      var imageFilename = imageList.find(function(filename){return filename.match(trainingImageRegExp);});
+      var ImageRegExp;
+      if(training){
+        ImageRegExp = new RegExp("Ent_"+letter+"_"+imageNb+"_.*\.png",'g');
+      }else{
+        ImageRegExp = new RegExp(letter+"_"+imageNb+"_.*\.png",'g');
+      }
+
+      var imageFilename = imageList.find(function(filename){return filename.match(ImageRegExp);});
       return pathToImages + imageFilename;
     }
+
     function showImage(taskNb, letter,imageNb,imageList,training,callback){
-      var imagePath = getImagePath(1, letter, imageNb, imageList, true);
+      var imagePath = getImagePath(taskNb, letter, imageNb, imageList, training);
       $(".task1-img").removeClass("hidden");
       $(".task1-img").attr("src",imagePath);
       setTimeout(displayBlank.bind(this,callback),3000);
@@ -166,6 +299,7 @@
 
     function displayAllImages(taskNb, letter,indexArray,imageList,training,callback){
       $(".task1-all-image-container").removeClass("hidden");
+      $(".task1-all-image-container").empty();
       async.each(indexArray,function(index,cb){
         var path = getImagePath(taskNb, letter,index,imageList,training);
         html = "<div class='pure-u-1-4'><img src='"+path+"'></div>";
@@ -173,7 +307,13 @@
         cb();
       },function(err){
         if(err)console.error(err);
-        callback();
+        $(window).keypress(function (e) {
+          if (e.keyCode === 0 || e.keyCode === 32) {
+            e.preventDefault();
+            $(window).unbind("keypress");
+            callback();
+          }
+        });
       });
     }
 
