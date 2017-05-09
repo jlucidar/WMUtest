@@ -27,4 +27,14 @@
     </div>
   </div>
 </body>
+<script type="text/javascript" src="./libs/js/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(window).keydown(function (e) {
+			if (e.keyCode === 27) { //escape key pressed
+				nw.App.quit();
+			}
+		});
+	});
+</script>
 </html>

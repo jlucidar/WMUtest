@@ -5,11 +5,12 @@
   "repository": "https://github.com/jlucidar/WMUtest.git",
   "license": "MIT",
   "main":"index.html",
+  "icon":"images/icon.png",
   "window": {
     "title": "WMUtest",
-    "fullscreen":false
+    "fullscreen":true
   },
-  "version": "0.1.0",
+  "version": "1.0.0",
   "readme": "README.md",
   "dependencies": {
     "nw": "0.22.x"
