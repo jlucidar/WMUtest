@@ -10,7 +10,15 @@ h1{
 }
 
 h2{
-  margin: 0 0 8% 0;
+  margin: 0 0 5% 0;
+}
+
+p{
+  font-size: 2em;
+}
+
+body{
+  padding: 1em;
 }
 /***************/
 
@@ -48,6 +56,7 @@ transform: translateY(-50%);
 
 .task1-desc p{
   margin-left: 1.5em;
+  font-size: 1em;
 }
 
 .table1 table{
@@ -83,11 +92,12 @@ transform: translateY(-50%);
   font-weight: bold;
 }
 
-.task1-question-mark-container {
+.task1-question-mark-container,.task1-training-sign-container,.task1-test-sign-container {
     text-align: center;
     font-size: 6em;
     margin-top: 25%;
 }
+
 
 .task1-all-image-container{
   margin-top: 2em;
@@ -97,6 +107,13 @@ transform: translateY(-50%);
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.task1-list-id{
+  position: fixed;
+  bottom: 1em;
+  font-size: 2em;
+  margin-left: 1em;
 }
 
 /***************/
@@ -116,6 +133,10 @@ transform: translateY(-50%);
 
 .task2-desc p{
   margin-left: 1.5em;
+}
+
+.task2-desc li{
+  font-size: 2em;
 }
 
 .task2-child-instruction{

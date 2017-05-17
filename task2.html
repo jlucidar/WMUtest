@@ -10,12 +10,15 @@
     <div class="task2-home">
       <h1>Tâche 2 :</h1>
       <div class="pure-g">
-        <div class="pure-u-1">
+        <div class="pure-u-1-5 task2-desc"></div>
+        <div class="pure-u-3-5 task2-desc">
           <ul>
-            <li>Lors de cette tâche, des images seront présentées</li>
-            <li>A la fin de la présentation, l’enfant devra rappeler les deux derniers mots de la liste</li>
+            <li>Lors de cette tâche, des images seront présentées.</li>
+            <li>A la fin de la présentation, l’enfant devra rappeler les deux derniers mots de la liste.</li>
             <li>La quantité de mots à rappeler sera indiqué à chaque fois.</li>
+          </ul>
         </div>
+        <div class="pure-u-1-5 task2-desc"></div>
       </div>
       <div class="pure-g">
         <div class="pure-u-1">
@@ -130,7 +133,7 @@
       fs.readdir('./images/task2/training/',function(err,imageList){
         if(err)return console.error(err);
 
-        indexArray = getOrderedArray(imageCount);
+        indexArray = getShuffledArray(imageCount);
 
         async.eachSeries(indexArray,function(index,cb){
           showImage(2, task_id, index, imageList, true, function(){
@@ -160,7 +163,7 @@
             $(".lets-go-task2-button-test").unbind("click");
             $(".task2-child-instruction-test").addClass("hidden");
             $(".task2-list-container").removeClass("hidden");
-            var indexArray = getOrderedArray(image_per_list[image_per_list_index]);
+            var indexArray = getShuffledArray(image_per_list[image_per_list_index]);
             image_per_list_index++;
             async.eachSeries(indexArray,function(index,cb2){
               showImage(2, list_id, index, imageList, false, function(){
@@ -243,6 +246,20 @@
       var d= new Array(nbCount);
       for (var i=1;i<=nbCount;i++){
         d[i-1]=i;
+      }
+      return d;
+    }
+
+    function getShuffledArray(nbCount) {
+      var d= new Array(nbCount);
+      for (var i=1;i<=nbCount;i++){
+        d[i-1]=i;
+      }
+      for (var c = d.length - 1; c > 0; c--) {
+        var b = Math.floor(Math.random() * (c + 1));
+        var a = d[c];
+        d[c] = d[b];
+        d[b] = a;
       }
       return d;
     }
