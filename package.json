@@ -5,9 +5,9 @@
   "repository": "https://github.com/jlucidar/WMUtest.git",
   "license": "MIT",
   "main":"index.html",
-  "icon":"images/icon.png",
   "window": {
     "title": "WMUtest",
+    "icon":"images/icon.png",
     "fullscreen":true
   },
   "version": "1.0.0",

@@ -162,7 +162,7 @@ transform: translateY(-50%);
   font-weight: bold;
 }
 
-.task2-question-mark-container {
+.task2-question-mark-container,.task2-training-sign-container,.task2-test-sign-container {
     text-align: center;
     font-size: 6em;
     margin-top: 25%;

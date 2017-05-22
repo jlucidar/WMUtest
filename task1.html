@@ -123,7 +123,7 @@
     <div class="task1-child-instruction task1-child-instruction-test hidden">
         <h1>On Continue ?</h1>
         <p>
-        Maintenant je ne te donnerai plus la réponse.
+        Maintenant je ne te donnerai plus la réponse.<br/>
         Retiens <b><u>les <span class="task1-nb-of-images-to-remember">X</span> choses les plus petites.</u></b><br/>
         <br/>
         Soit bien attentif !<br/>
@@ -166,8 +166,10 @@
         $(".task1-home").addClass("hidden");
         $(".task1-child-instruction-training-A").removeClass("hidden");
       });
+      bindSpaceBarToClick($(".start-task1-button"),bindSpaceBarToClick.bind(this,$(".lets-go-task1-button-training-A")));
 
       $(".lets-go-task1-button-training-A").click(function(e){
+        $(window).unbind("keyup");
         $(".task1-child-instruction-training-A").addClass("hidden");
         $(".task1-training-sign-container").removeClass("hidden");
         setTimeout(function(){
@@ -190,18 +192,21 @@
         $(".task1-all-image-container").addClass("hidden");
         $(".task1-child-instruction-training-B").removeClass("hidden");
         $(".lets-go-task1-button-training-B").click(function(e){
+          $(window).unbind("keyup");
           $(".task1-child-instruction-training-B").addClass("hidden");
           $(".task1-list-container").removeClass("hidden");
           doTraining('B',6,function(err,result){
             $(".task1-all-image-container").addClass("hidden");
             $(".task1-child-instruction-training-C").removeClass("hidden");
             $(".lets-go-task1-button-training-C").click(function(e){
+              $(window).unbind("keyup");
               $(".task1-child-instruction-training-C").addClass("hidden");
               $(".task1-list-container").removeClass("hidden");
               doTraining('C',5,function(err,result){
                 $(".task1-all-image-container").addClass("hidden");
                 $(".task1-child-instruction-training-D").removeClass("hidden");
                 $(".lets-go-task1-button-training-D").click(function(e){
+                  $(window).unbind("keyup");
                   $(".task1-child-instruction-training-D").addClass("hidden");
                   $(".task1-list-container").removeClass("hidden");
                   doTraining('D',8,function(err,result){
@@ -217,10 +222,13 @@
                     },3000);
                   });
                 });
+                bindSpaceBarToClick($(".lets-go-task1-button-training-D"));
               });
             });
+            bindSpaceBarToClick($(".lets-go-task1-button-training-C"));
           });
         });
+          bindSpaceBarToClick($(".lets-go-task1-button-training-B"));
       });
     }
 
@@ -262,6 +270,7 @@
           $(".task1-nb-of-images-to-remember").html((list_id[0]=="A"||list_id[0]=="B")?2:4); //check the number of image to remember, 2 for A and B criterion, 4 if anything else
           $(".task1-list-id").html(list_id);
           $(".lets-go-task1-button-test").click(function(e){
+            $(window).unbind("keyup");
             $(".lets-go-task1-button-test").unbind("click");
             $(".task1-child-instruction-test").addClass("hidden");
             $(".task1-list-container").removeClass("hidden");
@@ -275,6 +284,7 @@
               displayQuestionMark(cb);
             });
           });
+          bindSpaceBarToClick($(".lets-go-task1-button-test"));
         },function(err){
           if(err)console.error(err);
           callback();
@@ -311,11 +321,11 @@
     function displayQuestionMark(callback){
       $(".task1-img").addClass("hidden");
       $(".task1-question-mark-container").removeClass("hidden");
-      $(window).keypress(function (e) {
+      $(window).keyup(function (e) {
         if (e.keyCode === 0 || e.keyCode === 32) { // space bar pressed
           e.preventDefault();
           $(".task1-question-mark-container").addClass("hidden");
-          $(window).unbind("keypress");
+          $(window).unbind("keyup");
           callback();
         }
       });
@@ -331,10 +341,10 @@
         cb();
       },function(err){
         if(err)console.error(err);
-        $(window).keypress(function (e) {
+        $(window).keyup(function (e) {
           if (e.keyCode === 0 || e.keyCode === 32) { // space bar pressed
             e.preventDefault();
-            $(window).unbind("keypress");
+            $(window).unbind("keyup");
             callback();
           }
         });
@@ -354,6 +364,17 @@
         d[b] = a;
       }
       return d;
+    }
+
+    function bindSpaceBarToClick(elt,cb){
+      $(window).one("keyup",function (e) {
+        if (e.keyCode === 0 || e.keyCode === 32) { // space bar pressed
+          e.preventDefault();
+          $(window).unbind("keyup");
+          elt.click();
+          return typeof cb ==="function" ? cb():0;
+        }
+      });
     }
 
   </script>

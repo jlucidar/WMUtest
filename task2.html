@@ -80,6 +80,12 @@
     <div class="task2-question-mark-container hidden">
       ?
     </div>
+    <div class="task2-training-sign-container hidden">
+      Entrainement
+    </div>
+    <div class="task2-test-sign-container hidden">
+      Test
+    </div>
     <div class="pure-g task2-all-image-container hidden">
     </div>
   </body>
@@ -90,15 +96,21 @@
     $(document).ready(function(){
 
       $(".start-task2-button").click(function(e){
+        $(window).unbind("keyup");
         $(".task2-home").addClass("hidden");
         $(".task2-child-instruction-training-1").removeClass("hidden");
       });
       bindSpaceBarToClick($(".start-task2-button"),bindSpaceBarToClick.bind(this,$(".lets-go-task2-button-training-1")));
 
       $(".lets-go-task2-button-training-1").click(function(e){
+        $(window).unbind("keyup");
         $(".task2-child-instruction-training-1").addClass("hidden");
-        $(".task2-list-container").removeClass("hidden");
-        startTask1();
+        $(".task2-training-sign-container").removeClass("hidden");
+        setTimeout(function(){
+          $(".task2-training-sign-container").addClass("hidden");
+          $(".task2-list-container").removeClass("hidden");
+          startTask2();
+        },3000);
       });
 
       $(window).keydown(function (e) {
@@ -109,20 +121,25 @@
 
     });
 
-    function startTask1(){
+    function startTask2(){
       doTraining('1',3,function(err,result){
         $(".task2-all-image-container").addClass("hidden");
         $(".task2-child-instruction-training-2").removeClass("hidden");
         $(".lets-go-task2-button-training-2").click(function(e){
+          $(window).unbind("keyup");
           $(".task2-child-instruction-training-2").addClass("hidden");
           $(".task2-list-container").removeClass("hidden");
           doTraining('2',3,function(err,result){
             $(".task2-all-image-container").addClass("hidden");
-            console.log("training for task 2 done !");
-            doTest(function(err,result){
-              console.log("Task 2 done !");
-              document.location ="./index.html";
-            });
+            $(".task2-test-sign-container").removeClass("hidden");
+            setTimeout(function(){
+              $(".task2-test-sign-container").addClass("hidden");
+              console.log("training for task 2 done !");
+              doTest(function(err,result){
+                console.log("Task 2 done !");
+                document.location ="./index.html";
+              });
+            },3000);
           });
         });
         bindSpaceBarToClick($(".lets-go-task2-button-training-2"));
@@ -160,6 +177,7 @@
           $(".task2-child-instruction-test").removeClass("hidden");
           $(".task2-nb-of-images-to-remember").html(2); //set the number of image to remember : 2
           $(".lets-go-task2-button-test").click(function(e){
+            $(window).unbind("keyup");
             $(".lets-go-task2-button-test").unbind("click");
             $(".task2-child-instruction-test").addClass("hidden");
             $(".task2-list-container").removeClass("hidden");
@@ -211,11 +229,11 @@
     function displayQuestionMark(callback){
       $(".task2-img").addClass("hidden");
       $(".task2-question-mark-container").removeClass("hidden");
-      $(window).keypress(function (e) {
+      $(window).keyup(function (e) {
         if (e.keyCode === 0 || e.keyCode === 32) { // space bar pressed
           e.preventDefault();
           $(".task2-question-mark-container").addClass("hidden");
-          $(window).unbind("keypress");
+          $(window).unbind("keyup");
           setTimeout(callback,500); // debounce
         }
       });
@@ -231,10 +249,10 @@
         cb();
       },function(err){
         if(err)console.error(err);
-        $(window).keypress(function (e) {
+        $(window).keyup(function (e) {
           if (e.keyCode === 0 || e.keyCode === 32) { // space bar pressed
             e.preventDefault();
-            $(window).unbind("keypress");
+            $(window).unbind("keyup");
             setTimeout(callback,500); // debounce
           }
         });
@@ -268,8 +286,8 @@
       $(window).one("keyup",function (e) {
         if (e.keyCode === 0 || e.keyCode === 32) { // space bar pressed
           e.preventDefault();
-          elt.click();
           $(window).unbind("keyup");
+          elt.click();
           return typeof cb ==="function" ? cb():0;
         }
       });
