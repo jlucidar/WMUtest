@@ -29,7 +29,7 @@
     <div class="task2-child-instruction task2-child-instruction-training-1 hidden">
         <h1>On va jouer à un jeu !</h1>
         <p>
-        Tu vas voir plein d’images, à la fin il faudra que tu me redises <b><u>les 2 dernières images que tu as vu.</u></b><br/>
+        Tu vas voir des images, à la fin il faudra que tu me redises <b><u>les 2 dernières images que tu as vu.</u></b><br/>
         <br/>
         On va faire un exemple ensemble.<br/>
         Soit bien attentif !<br/>
@@ -45,7 +45,7 @@
     <div class="task2-child-instruction task2-child-instruction-training-2 hidden">
         <h1>On Réessaye ?</h1>
         <p>
-        Rappelle toi, Tu vas voir plein d’images, à la fin il faudra que tu me redises <b><u>les 2 dernières images que tu as vu.</u></b><br/>
+        Rappelle toi, Tu vas voir des images, à la fin il faudra que tu me redises <b><u>les 2 dernières images que tu as vu.</u></b><br/>
         <br/>
         Soit bien attentif !<br/>
         Tu es prêt ?<br/>
@@ -98,20 +98,20 @@
       $(".start-task2-button").click(function(e){
         $(window).unbind("keyup");
         $(".task2-home").addClass("hidden");
-        $(".task2-child-instruction-training-1").removeClass("hidden");
-      });
-      bindSpaceBarToClick($(".start-task2-button"),bindSpaceBarToClick.bind(this,$(".lets-go-task2-button-training-1")));
-
-      $(".lets-go-task2-button-training-1").click(function(e){
-        $(window).unbind("keyup");
-        $(".task2-child-instruction-training-1").addClass("hidden");
         $(".task2-training-sign-container").removeClass("hidden");
         setTimeout(function(){
           $(".task2-training-sign-container").addClass("hidden");
-          $(".task2-list-container").removeClass("hidden");
-          startTask2();
+          $(".task2-child-instruction-training-1").removeClass("hidden");
+          $(".lets-go-task2-button-training-1").click(function(e){
+            $(window).unbind("keyup");
+            $(".task2-child-instruction-training-1").addClass("hidden");
+            $(".task2-list-container").removeClass("hidden");
+            startTask2();
+          });
+          bindSpaceBarToClick($(".lets-go-task2-button-training-1"));
         },3000);
       });
+      bindSpaceBarToClick($(".start-task2-button"));
 
       $(window).keydown(function (e) {
         if (e.keyCode === 27) { //escape key pressed

@@ -163,21 +163,22 @@
     $(document).ready(function(){
 
       $(".start-task1-button").click(function(e){
-        $(".task1-home").addClass("hidden");
-        $(".task1-child-instruction-training-A").removeClass("hidden");
-      });
-      bindSpaceBarToClick($(".start-task1-button"),bindSpaceBarToClick.bind(this,$(".lets-go-task1-button-training-A")));
-
-      $(".lets-go-task1-button-training-A").click(function(e){
         $(window).unbind("keyup");
-        $(".task1-child-instruction-training-A").addClass("hidden");
+        $(".task1-home").addClass("hidden");
         $(".task1-training-sign-container").removeClass("hidden");
         setTimeout(function(){
           $(".task1-training-sign-container").addClass("hidden");
-          $(".task1-list-container").removeClass("hidden");
-          startTask1();
+          $(".task1-child-instruction-training-A").removeClass("hidden");
+          $(".lets-go-task1-button-training-A").click(function(e){
+            $(window).unbind("keyup");
+            $(".task1-child-instruction-training-A").addClass("hidden");
+            $(".task1-list-container").removeClass("hidden");
+            startTask1();
+          });
+          bindSpaceBarToClick($(".lets-go-task1-button-training-A"));
         },3000);
       });
+      bindSpaceBarToClick($(".start-task1-button"));
 
       $(window).keydown(function (e) {
         if (e.keyCode === 27) { //escape key pressed
