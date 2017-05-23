@@ -1,5 +1,5 @@
 #define MyAppName "WMU test"
-#define MyAppVersion "1.0.0"
+#define MyAppVersion "1.0.1"
 #define MyAppPublisher "Jimmy Lucidarme - Célia Benoist"
 #define MyAppURL "http://www.github.com/jlucidar/WMUtest"
 
@@ -43,8 +43,8 @@ Source: "../node_modules/*"; Excludes: "nw"; DestDir: "{app}/node_modules"; Flag
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:DesktopIcon}"
 
 [Icons]
-Name: "{group}\WMU test"; Filename: "{app}\WMUtest.exe"; WorkingDir: "{app}"; IconFilename: "{app}/images/fabmo.ico"
-Name: "{userdesktop}\WMU test"; Filename: "{app}\WMUtest.exe"; WorkingDir: "{app}"; IconFilename: "{app}/images/fabmo.ico"; Tasks: desktopicon
+Name: "{group}\WMU test"; Filename: "{app}\WMUtest.exe"; WorkingDir: "{app}"; IconFilename: "{app}/images/icon.ico"
+Name: "{userdesktop}\WMU test"; Filename: "{app}\WMUtest.exe"; WorkingDir: "{app}"; IconFilename: "{app}/images/icon.ico"; Tasks: desktopicon
 
 [Run]
 Filename: "{app}\WMUtest.exe"; WorkingDir: "{app}"; Description: {cm:LaunchProgram}; Flags: postinstall shellexec
